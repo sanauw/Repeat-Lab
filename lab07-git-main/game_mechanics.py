@@ -12,7 +12,7 @@ def welcome_message():
     Returns: None
     """
     #------------------------
-    # Add your code here
+    print("Welcome to the game!")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -29,9 +29,13 @@ def choose_category(categories):
     - str: The chosen category.
     """
     #------------------------
-    # Add your code here
+    a=input((f"choose a category:{categories}"))
+    if a in categories:
+        return a
+    elif a not in categories:
+        print("wrong input")
+    
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
@@ -64,7 +68,7 @@ def game_over_message(final_score):
     Returns: None
     """
     #------------------------
-    # Add your code here
+    print(f"Gamer Over!"{final_score})
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -81,7 +85,7 @@ def run_game_rounds(categories):
     Returns: None
     """
     #------------------------
-    # Add your code here
+    #
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -176,3 +180,5 @@ def restart_or_exit():
     #------------------------
 
 #---------------------------------------
+categories = ["science","pop"]
+print(choose_category(categories))

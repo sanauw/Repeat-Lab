@@ -9,15 +9,55 @@ import random
 questions = {
     "Science": [
         ("What is the chemical symbol for water?", "H2O"),
-        # Add more questions as tuples (question, answer)
+        ("What is water?", "drink"),
+        ("What is the chemical symbol for nitrogen?", "N"),
+        ("What is the chemical symbol for Iron?", "Fe"),
+        ("What is the chemical symbol for pottasium?", "K"),
+        ("What is the chemical symbol for aluminuim?", "Al"),
+        ("What is the chemical symbol for copper?", "Cu"),
+        ("What is the chemical symbol for silicon?", "Si"),
+        ("What is the chemical symbol for hydrogen?", "H"),
+        ("What is the chemical symbol for cobalt?", "Cb"),
     ],
+    "Bands": [
+        ("Name the song that talks about going back to a room number", "505"),
+        ("Name the song that talks about sceret doors", "Secret Door"),
+        ("which neighbourhood song is about stargazing?", "Stargazing"),
+        ("Which band sang wanna be yours", "Arctic Monekys"),
+        ("Which band sang arabella", "Arctic Monekys"),
+        ("Which band sang knee socks", "Arctic Monekys"),
+        ("Which band sang reflections", "The Neighbourhood"),
+        ("Which band sang Strong", "1D"),
+        ("Which band sang Remeber When", "Wallows"),
+        ("Which band sang here comes the sun", "Beatles"),
+     ]
 }
 
 hints = {
     "Science": [
-        # Pair each question with a corresponding hint.
+         ('H'),
+        ('drinking matter'),
+        ('see the world itself'),
+        ('starts with F'),
+        ('slice the work ok'),
+        ('see the first 2 letters'),
+        ('mini coppen'),
+        ('spicy'),
+        ('Ha-a'),
+        ('see the word itself'),
     ],
-    # Repeat for other categories as needed.
+    "Bands": [
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+        ('see q'),
+    ],
 }
 
 #---------------------------------------
@@ -33,8 +73,9 @@ def select_random_question(category):
     - tuple: A tuple containing the selected question (str) and its corresponding answer (str).
     """
     #------------------------
-    # Add your code here
-    #------------------------
+    global questions
+    for i in questions[category]:
+        return (i)
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -52,7 +93,9 @@ def check_answer(player_answer, correct_answer):
     - bool: True if the answers match, False otherwise.
     """
     #------------------------
-    # Add your code here
+    if player_answer==correct_answer:
+        return True
+    return False
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -70,9 +113,8 @@ def remove_question(category, question):
     Returns:
     - None
     """
-    #------------------------
-    # Add your code here
-    #------------------------
+    for j in questions[category]:
+        category.remove(question)
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
@@ -89,7 +131,9 @@ def display_question_and_accept_answer(question):
     - str: The player's answer to the question.
     """
     #------------------------
-    # Add your code here
+    print(question)
+    answer = input()
+    return answer
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -126,13 +170,13 @@ def display_correct_answer(correct_answer):
     - None
     """
     #------------------------
-    # Add your code here
+    if check_answer()==correct_answer():
+        break
+    else:
+        print(correct_answer)
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
-
-
-
 
