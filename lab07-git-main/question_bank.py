@@ -8,8 +8,8 @@ import random
 # Simplified example with one category. Expand as needed.
 questions = {
     "Science": [
-        ("What is the chemical symbol for water?", "H2O"),
-        ("What is water?", "drink"),
+        ("What is water?", "H2O"),
+        ("What do you do with water?", "drink"),
         ("What is the chemical symbol for nitrogen?", "N"),
         ("What is the chemical symbol for Iron?", "Fe"),
         ("What is the chemical symbol for pottasium?", "K"),
