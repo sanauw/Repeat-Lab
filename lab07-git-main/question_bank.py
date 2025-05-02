@@ -9,15 +9,56 @@ import random
 questions = {
     "Science": [
         ("What is the chemical symbol for water?", "H2O"),
-        # Add more questions as tuples (question, answer)
+        ("Are atoms the basic unit of matter?", "Yes"),
+        ("What is ammonium made up of?", "Nitrogen, Hydrogen"),
+        ("What is the chemical symbol for Iron?", "Fe"),
+        ("What is the chemical symbol for pottasium?", "K"),
+        ("What is the chemical symbol for aluminuim?", "Al"),
+        ("What is the chemical symbol for copper?", "Cu"),
+        ("What is the chemical symbol for silicon?", "Si"),
+        ("What is the chemical symbol for hydrogen?", "H"),
+        ("What is the chemical symbol for cobalt?", "Cb")
     ],
+
+    "Bands": [
+        ("Name the song that talks about going back to a room number", "505"),
+        ("Name a song that talks about the silver lining during depression. Name the artist too", "Fine Line by Harry Styles"),
+        ("which neighbourhood song is about looking at stars?", "Stargazing"),
+        ("Which band sang 'Wanna Be Yours'", "Arctic Monekys"),
+        ("Which artist sang 'Stardust'", "Zayn Malik"),
+        ("Which band sang 'Live While We're Young'", "One Direction"),
+        ("Which band sang 'Demons'", "Imagine Dragons"),
+        ("Which band sang 'Change Your Ticket'", "One Direction"),
+        ("Which band sang 'Words'", "Boyzone"),
+        ("Which band sang 'Here Comes The Sun", "Beatles")
+     ]
 }
 
 hints = {
-    "Science": [
-        # Pair each question with a corresponding hint.
+"Science": [
+         ('H'),
+        ('What are molecules made up of?'),
+        ('Gases'),
+        ('starts with F'),
+        ('slice the work ok'),
+        ('see the first 2 letters'),
+        ('mini coppen'),
+        ('spicy'),
+        ('Ha-a'),
+        ('see the word itself'),
     ],
-    # Repeat for other categories as needed.
+    "Bands": [
+        ('Artist: Arctic Monkeys'),
+        ('The artist was a former member of One DIrection'),
+        ('Artist: Neighbourhood'),
+        ('The name involves the name of an animal'),
+        ('The artist was a former member of One Direction'),
+        ('One of the singers in the band is Louis Tomlinson'),
+        ('Imagine an extinct species'),
+        ('Name of the album: Four'),
+        ('It is an Irish Boyzone'),
+        ('INSECTS')
+    ]
 }
 
 #---------------------------------------
@@ -33,7 +74,9 @@ def select_random_question(category):
     - tuple: A tuple containing the selected question (str) and its corresponding answer (str).
     """
     #------------------------
-    # Add your code here
+    global questions
+    list_of_questions = questions[category]
+    return random.choice(list_of_questions)
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -52,7 +95,10 @@ def check_answer(player_answer, correct_answer):
     - bool: True if the answers match, False otherwise.
     """
     #------------------------
-    # Add your code here
+    if player_answer == correct_answer:
+        return True
+    else:
+        return False
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -71,7 +117,10 @@ def remove_question(category, question):
     - None
     """
     #------------------------
-    # Add your code here
+    global questions
+    for i in range(len(questions[category])):
+        if questions[category][i][0] == question:    # i = tuple, i[0] = question, i[1] = answer
+            category.remove(i)
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -89,7 +138,9 @@ def display_question_and_accept_answer(question):
     - str: The player's answer to the question.
     """
     #------------------------
-    # Add your code here
+    print(question)
+    ans = input("Your answer:" )
+    return ans 
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -108,7 +159,15 @@ def provide_hint(category, question):
     - str: The hint for the given question.
     """
     #------------------------
-    # Add your code here
+    global hints
+    global questions
+    for i in range(len(questions[category])):
+        if questions[category][i][0] == question:
+            hint = hints[category][i]
+            #q_tuple = questions[category][i]
+
+    return hint
+
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -126,7 +185,7 @@ def display_correct_answer(correct_answer):
     - None
     """
     #------------------------
-    # Add your code here
+    print(correct_answer)
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------

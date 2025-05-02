@@ -15,7 +15,10 @@ def choose_difficulty():
     - str: Valid difficulty levels are ('easy', 'medium', 'hard').
     """
     #------------------------
-    # Add your code here
+    diff = ["easy","medium","hard"]
+    a = input("Choose difficulty 'easy', 'medium', 'hard':")
+    if a in diff:
+        return a
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -34,7 +37,11 @@ def display_leaderboard(leaderboard):
     The function sorts the leaderboard by scores in descending order and prints the names and scores of the top players. If the leaderboard is empty, it prints a message indicating that there are no scores to display.
     """
     #------------------------
-    # Add your code here
+    if len(leaderboard) == 0:
+        print("No scores to display")
+    else:
+        values = dict(sorted(leaderboard.items(), key=lambda item: item[1], reverse = True))
+        print(values)
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -92,7 +99,10 @@ def provide_feedback(is_correct):
     - is it incorrect? "Sorry, that's incorrect."
     """
     #------------------------
-    # Add your code here
+    if is_correct == True:
+        print("Well done!")
+    elif is_correct == False:
+        print("Sorry, that's incorrect.")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -113,7 +123,11 @@ def fifty_fifty_lifeline(correct_answer, options):
     This function is designed to be used once per game session by a player who chooses to use the 50/50 lifeline. It randomly selects one incorrect answer to keep along with the correct answer and removes the other options.
     """
     #------------------------
-    # Add your code here
+    for e in options:
+        if e != correct_answer and len(options) >2:
+            options.remove(e)
+        if len(options) == 2:
+            return options
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -133,7 +147,11 @@ def skip_question(allowed_skips):
     This function checks if the player has any skips available. If so, it decrements the allowed_skips counter and returns True, indicating the question can be skipped. If no skips are available, it returns False. This function should be called before presenting a new question to the player.
     """
     #------------------------
-    # Add your code here
+    if allowed_skips>1:
+        allowed_skips = allowed_skips - 1
+        return True
+    else:
+        return False 
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
