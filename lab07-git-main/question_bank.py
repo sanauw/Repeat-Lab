@@ -11,33 +11,30 @@ questions = {
         ("What is water?", "H2O"),
         ("What do you do with water?", "drink"),
         ("What is the chemical symbol for nitrogen?", "N"),
-        ("What is the chemical symbol for Iron?", "Fe"),
-        ("What is the chemical symbol for pottasium?", "K"),
-        ("What is the chemical symbol for aluminuim?", "Al"),
-        ("What is the chemical symbol for copper?", "Cu"),
-        ("What is the chemical symbol for silicon?", "Si"),
-        ("What is the chemical symbol for hydrogen?", "H"),
-        ("What is the chemical symbol for cobalt?", "Cb"),
+        ("What is the chemical symbol for water?", "H2O"),
+        ("Are atoms the basic unit of matter?", "Yes"),
+        ("What is ammonium made up of?", "Nitrogen, Hydrogen"),
     ],
+
     "Bands": [
         ("Name the song that talks about going back to a room number", "505"),
-        ("Name the song that talks about sceret doors", "Secret Door"),
-        ("which neighbourhood song is about stargazing?", "Stargazing"),
-        ("Which band sang wanna be yours", "Arctic Monekys"),
-        ("Which band sang arabella", "Arctic Monekys"),
-        ("Which band sang knee socks", "Arctic Monekys"),
-        ("Which band sang reflections", "The Neighbourhood"),
-        ("Which band sang Strong", "1D"),
-        ("Which band sang Remeber When", "Wallows"),
-        ("Which band sang here comes the sun", "Beatles"),
+        ("Name a song that talks about the silver lining during depression. Name the artist too", "Fine Line by Harry Styles"),
+        ("which neighbourhood song is about looking at stars?", "Stargazing"),
+        ("Which band sang 'Wanna Be Yours'", "Arctic Monekys"),
+        ("Which artist sang 'Stardust'", "Zayn Malik"),
+        ("Which band sang 'Live While We're Young'", "One Direction"),
+        ("Which band sang 'Demons'", "Imagine Dragons"),
+        ("Which band sang 'Change Your Ticket'", "One Direction"),
+        ("Which band sang 'Words'", "Boyzone"),
+        ("Which band sang 'Here Comes The Sun", "Beatles")
      ]
 }
 
 hints = {
-    "Science": [
+"Science": [
          ('H'),
-        ('drinking matter'),
-        ('see the world itself'),
+        ('What are molecules made up of?'),
+        ('Gases'),
         ('starts with F'),
         ('slice the work ok'),
         ('see the first 2 letters'),
@@ -45,19 +42,20 @@ hints = {
         ('spicy'),
         ('Ha-a'),
         ('see the word itself'),
+
     ],
     "Bands": [
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-        ('see q'),
-    ],
+        ('Artist: Arctic Monkeys'),
+        ('The artist was a former member of One DIrection'),
+        ('Artist: Neighbourhood'),
+        ('The name involves the name of an animal'),
+        ('The artist was a former member of One Direction'),
+        ('One of the singers in the band is Louis Tomlinson'),
+        ('Imagine an extinct species'),
+        ('Name of the album: Four'),
+        ('It is an Irish Boyzone'),
+        ('INSECTS')
+    ]
 }
 
 #---------------------------------------
@@ -74,9 +72,9 @@ def select_random_question(category):
     """
     #------------------------
     global questions
-    for i in questions[category]:
-        return (i)
-    raise NotImplementedError("This function is not implemented yet.")
+    list_of_questions = questions[category]
+    return random.choice(list_of_questions)
+    #------------------------
     #------------------------
 
 #---------------------------------------
@@ -93,11 +91,11 @@ def check_answer(player_answer, correct_answer):
     - bool: True if the answers match, False otherwise.
     """
     #------------------------
-    if player_answer==correct_answer:
+    if player_answer == correct_answer:
         return True
-    return False
+    else:
+        return False
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
@@ -113,9 +111,11 @@ def remove_question(category, question):
     Returns:
     - None
     """
-    for j in questions[category]:
-        category.remove(question)
-    raise NotImplementedError("This function is not implemented yet.")
+    global questions
+    for i in range(len(questions[category])):
+        if questions[category][i][0] == question:    # i = tuple, i[0] = question, i[1] = answer
+            category.remove(i)
+    #------------------------
     #------------------------
 
 #---------------------------------------
@@ -132,8 +132,8 @@ def display_question_and_accept_answer(question):
     """
     #------------------------
     print(question)
-    answer = input()
-    return answer
+    ans = input("Your answer:" )
+    return ans 
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -152,7 +152,15 @@ def provide_hint(category, question):
     - str: The hint for the given question.
     """
     #------------------------
-    # Add your code here
+    global hints
+    global questions
+    for i in range(len(questions[category])):
+        if questions[category][i][0] == question:
+            hint = hints[category][i]
+            #q_tuple = questions[category][i]
+
+    return hint
+
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -174,6 +182,7 @@ def display_correct_answer(correct_answer):
         break
     else:
         print(correct_answer)
+
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------

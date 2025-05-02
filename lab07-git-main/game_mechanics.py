@@ -4,6 +4,8 @@
 #    Student A (team lead)
 #---------------------------------------
 
+import random
+
 def welcome_message():
     """
     Display the game's welcome message to the player.
@@ -12,7 +14,7 @@ def welcome_message():
     Returns: None
     """
     #------------------------
-    print("Welcome to the game!")
+    print("Welcome to Trivia Trek!")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -29,13 +31,11 @@ def choose_category(categories):
     - str: The chosen category.
     """
     #------------------------
-    a=input((f"choose a category:{categories}"))
-    if a in categories:
-        return a
-    elif a not in categories:
-        print("wrong input")
-    
-    #------------------------
+    print(f"Please select a category from the following: ")
+    for i in categories:
+        print(i)
+        
+    userInput = input("I choose: ")
     #------------------------
 
 #---------------------------------------
@@ -51,7 +51,8 @@ def display_score(score, round_number):
     Returns: None
     """
     #------------------------
-    # Add your code here
+    print(f"Your current score: {score}")
+    print(f"Current round: {round_number}")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -68,7 +69,8 @@ def game_over_message(final_score):
     Returns: None
     """
     #------------------------
-    print(f"Gamer Over!"{final_score})
+    print(f"Game Over! \n Your score: {final_score}")
+
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -85,7 +87,17 @@ def run_game_rounds(categories):
     Returns: None
     """
     #------------------------
+
     #
+=======
+    global questions
+    category = choose_category(categories)
+    list_of_questions = questions[category]    # list_of_questions is a list conataining questions and answers in tuples
+    for i in range(5):
+        question = random.choice(list_of_questions)   # question is a tuple with a question on the first index and the answer on the second
+        print(question[0])
+        correct_answer = question[1]
+        answer = input("Write your answer: ")
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -104,7 +116,10 @@ def validate_answer(player_answer, correct_answer):
     - bool: True if the player's answer is correct, False otherwise.
     """
     #------------------------
-    # Add your code here
+    if player_answer == correct_answer:
+        return True
+    else:
+        return False
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -123,7 +138,9 @@ def update_score(score, correct):
     - int: The updated score.
     """
     #------------------------
-    # Add your code here
+    if validate_answer(correct) == True:
+        score += 1
+    return score
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -141,7 +158,7 @@ def next_round(round_number):
     - int: The next round number.
     """
     #------------------------
-    # Add your code here
+    return (round_number + 1)
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -159,7 +176,9 @@ def check_game_over(incorrect_answers):
     - bool: True if the game should be over, False otherwise.
     """
     #------------------------
-    # Add your code here
+    if incorrect_answers == 3:
+        return True
+    return False
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -174,7 +193,7 @@ def restart_or_exit():
     Returns: None
     """
     #------------------------
-    # Add your code here
+    welcome_message()
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
