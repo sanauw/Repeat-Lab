@@ -37,8 +37,6 @@ def choose_category(categories):
         
     userInput = input("I choose: ")
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
-    #------------------------
 
 #---------------------------------------
 
@@ -72,6 +70,7 @@ def game_over_message(final_score):
     """
     #------------------------
     print(f"Game Over! \n Your score: {final_score}")
+
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
@@ -88,6 +87,9 @@ def run_game_rounds(categories):
     Returns: None
     """
     #------------------------
+
+    #
+=======
     global questions
     category = choose_category(categories)
     list_of_questions = questions[category]    # list_of_questions is a list conataining questions and answers in tuples
@@ -197,3 +199,5 @@ def restart_or_exit():
     #------------------------
 
 #---------------------------------------
+categories = ["science","pop"]
+print(choose_category(categories))

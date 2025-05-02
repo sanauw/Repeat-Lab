@@ -8,16 +8,12 @@ import random
 # Simplified example with one category. Expand as needed.
 questions = {
     "Science": [
+        ("What is water?", "H2O"),
+        ("What do you do with water?", "drink"),
+        ("What is the chemical symbol for nitrogen?", "N"),
         ("What is the chemical symbol for water?", "H2O"),
         ("Are atoms the basic unit of matter?", "Yes"),
         ("What is ammonium made up of?", "Nitrogen, Hydrogen"),
-        ("What is the chemical symbol for Iron?", "Fe"),
-        ("What is the chemical symbol for pottasium?", "K"),
-        ("What is the chemical symbol for aluminuim?", "Al"),
-        ("What is the chemical symbol for copper?", "Cu"),
-        ("What is the chemical symbol for silicon?", "Si"),
-        ("What is the chemical symbol for hydrogen?", "H"),
-        ("What is the chemical symbol for cobalt?", "Cb")
     ],
 
     "Bands": [
@@ -46,6 +42,7 @@ hints = {
         ('spicy'),
         ('Ha-a'),
         ('see the word itself'),
+
     ],
     "Bands": [
         ('Artist: Arctic Monkeys'),
@@ -78,7 +75,6 @@ def select_random_question(category):
     list_of_questions = questions[category]
     return random.choice(list_of_questions)
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
@@ -100,7 +96,6 @@ def check_answer(player_answer, correct_answer):
     else:
         return False
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
@@ -116,13 +111,11 @@ def remove_question(category, question):
     Returns:
     - None
     """
-    #------------------------
     global questions
     for i in range(len(questions[category])):
         if questions[category][i][0] == question:    # i = tuple, i[0] = question, i[1] = answer
             category.remove(i)
     #------------------------
-    raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
@@ -185,13 +178,14 @@ def display_correct_answer(correct_answer):
     - None
     """
     #------------------------
-    print(correct_answer)
+    if check_answer()==correct_answer():
+        break
+    else:
+        print(correct_answer)
+
     #------------------------
     raise NotImplementedError("This function is not implemented yet.")
     #------------------------
 
 #---------------------------------------
-
-
-
 
